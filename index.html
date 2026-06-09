@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love You Mummy ❤️</title>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#ffd1ff,#a1c4fd);
+    background-size:400% 400%;
+    animation:bgMove 10s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.card{
+    width:90%;
+    max-width:420px;
+    padding:25px;
+    text-align:center;
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(12px);
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    animation:pop 1s ease;
+    z-index:10;
+}
+
+@keyframes pop{
+    from{
+        transform:scale(0.5);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+h1{
+    color:white;
+    font-size:2rem;
+    margin-bottom:15px;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px white; }
+    to{ text-shadow:0 0 25px #ff4081; }
+}
+
+.message{
+    color:white;
+    font-size:1.05rem;
+    line-height:1.8;
+    margin-top:15px;
+}
+
+.signature{
+    margin-top:20px;
+    color:white;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:#ff4081;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+.heart{
+    position:absolute;
+    font-size:24px;
+    animation:float 8s linear infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>❤️ I Love You Mummy ❤️</h1>
+
+    <div class="message">
+        🌷 Dear Mummy 🌷<br><br>
+
+        Thank you for your endless love, care and support. 💖<br><br>
+
+        You are my biggest strength, my first teacher and my best friend. 👩‍👦✨<br><br>
+
+        No matter how old I grow, I will always be your little child. 🥰<br><br>
+
+        Thank you for everything you do for me every day. ❤️
+    </div>
+
+    <div class="signature">
+        💕 By MIHIR 💕
+    </div>
+
+    <button onclick="celebrate()">
+        🎉 Click Here Mummy 🎉
+    </button>
+</div>
+
+<script>
+// Welcome Confetti
+setTimeout(() => {
+    confetti({
+        particleCount:250,
+        spread:180,
+        origin:{y:0.6}
+    });
+}, 500);
+
+// Button Confetti
+function celebrate(){
+    confetti({
+        particleCount:350,
+        spread:220,
+        origin:{y:0.5}
+    });
+}
+
+// Floating Hearts
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = ["❤️","💖","💕","🌸"][Math.floor(Math.random()*4)];
+
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (Math.random()*4+4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+setInterval(createHeart,400);
+</script>
+
+</body>
+</html>
